@@ -7,8 +7,7 @@ import { useSelector } from 'react-redux';
 const RightContent = () => {
     const item= useSelector((state)=> state.CategoryNo)
     return (
-        <div>
-            <p>category No: {item}</p>
+        <div className='h-[530px] overflow-hidden rounded-xl px-5'>
             <DuaCard></DuaCard>
         </div>
     );

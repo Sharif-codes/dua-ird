@@ -3,9 +3,10 @@ import axios from "axios";
 import Category from "../ui/Categories/Category";
 import { useEffect, useState } from "react";
 
+
 const LeftContent = () => {
-    const [category,setCategory]= useState([])
-    const [subCategory, setSubCategory]= useState([])
+    const [category, setCategory] = useState([])
+    
     useEffect(() => {
         axios.get('http://localhost:4000/category')
             .then(response => {
@@ -17,17 +18,6 @@ const LeftContent = () => {
             });
     }, []);
 
- useEffect(() => {
-    axios.get('http://localhost:4000/SubCategory')
-        .then(response => {
-            console.log(response.data)
-            setSubCategory(response?.data);
-        })
-        .catch(error => {
-            console.error('Error fetching categories:', error);
-        });
-}, []);
-console.log(subCategory);
     return (
         <div className=" w-full h-[530px] overflow-hidden rounded-xl">
             <div className="bg-green-600 text-sm text-white text-center py-3 ">
@@ -48,9 +38,9 @@ console.log(subCategory);
                     </form>
                 </div>
                 <div className="overflow-y-auto h-[450px]">
-                <div className="p-2">
-                        {category?.map((item,idx) => (
-                            <Category key={idx} cat_id={item.cat_id} subcat_id={item.subcat_id}	dua_id={item.dua_id} name={item.cat_name_en}  subCategoryNo={item.no_of_subcat} duaNo={item.no_of_dua} icon={item.cat_icon} subCategory={subCategory} />
+                    <div className="p-2">
+                        {category?.map((item, idx) => (
+                            <Category key={idx} cat_id={item.cat_id} subcat_id={item.subcat_id} dua_id={item.dua_id} name={item.cat_name_en} subCategoryNo={item.no_of_subcat} duaNo={item.no_of_dua} icon={item.cat_icon} />
                         ))}
                     </div>
                 </div>

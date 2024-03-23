@@ -6,7 +6,7 @@ import profile from '@/assets/profile.svg'
 import StorerPovider from "@/Redux/Provider";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin-ext"] });
 
 export const metadata = {
   title: "ird",
@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} >
         <div className="grid grid-cols-12 bg-gray-200 p-5 h-screen overflow-hidden">
           <div className="col-span-1 overflow-hidden"><LeftSideBar></LeftSideBar></div>
           <div className="col-span-9 border "> {/* The middle column */}

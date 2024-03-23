@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const categorySlice= createSlice({
     name: "CategoryNo",
-    initialState: [],
+    initialState: [1],
     reducers:{
         selectedCategoryNo(state,action){
             state.push(action.payload)

@@ -77,11 +77,12 @@ import RightContent from '@/components/Contents/RightContent';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectedCategoryNo } from '@/Redux/Categoryslice';
 import { removeCategoryNO } from '@/Redux/Categoryslice';
+import axios from 'axios';
 
 // export const toggleCategoryContext = createContext();
 
-const Category = ({ name, subCategoryNo, duaNo, icon, cat_id, subCategory }) => {
-    
+const Category = ({ name, subCategoryNo, duaNo, icon, cat_id }) => {
+    const [subCategory, setSubCategory] = useState([])
     const [category, setCategory] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState([]);
     const dispatch= useDispatch()
@@ -91,8 +92,17 @@ const Category = ({ name, subCategoryNo, duaNo, icon, cat_id, subCategory }) => 
         setCategory(prevCategory => prevCategory === id ? null : id);
         dispatch(removeCategoryNO(id))
         dispatch(selectedCategoryNo(id))
-        
     };
+    useEffect(() => {
+        axios.get('http://localhost:4000/SubCategory')
+            .then(response => {
+                console.log(response.data)
+                setSubCategory(response?.data);
+            })
+            .catch(error => {
+                console.error('Error fetching categories:', error);
+            });
+    }, []);
 
     useEffect(() => {
         if (selected === null) {

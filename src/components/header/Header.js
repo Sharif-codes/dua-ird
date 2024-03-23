@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <div className='flex justify-between border h-full items-center'>
+        <div className='flex justify-between border h-full items-center pb-5'>
             <div >
                 <div className='text-xl'>Duas Page</div>
             </div>
