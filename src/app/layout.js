@@ -3,6 +3,8 @@ import "./globals.css";
 import LeftSideBar from "@/components/sidebar/LeftSideBar";
 import RightSideBar from "@/components/sidebar/RightSideBar";
 import profile from '@/assets/profile.svg'
+import StorerPovider from "@/Redux/Provider";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,9 @@ export default function RootLayout({ children }) {
           <div className="col-span-1 overflow-hidden"><LeftSideBar></LeftSideBar></div>
           <div className="col-span-9 border "> {/* The middle column */}
             <div className="h-full"> {/* Ensure the middle column fills the height of the container */}
-              {children}
+            <StorerPovider>
+            {children}
+            </StorerPovider>
             </div>
           </div>
           <div className="border col-span-2"> <RightSideBar></RightSideBar></div>
